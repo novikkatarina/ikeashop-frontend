@@ -31,8 +31,8 @@ const useProducts = () => {
 
       if (filters && filters.length > 0) {
         filteredProducts = products.filter((p: IProduct) =>
-          filters.find((filter: string) =>
-            p.availableSizes.find((size: string) => size === filter)
+          filters.find((filter: string) => ''
+            // p.availableSizes.find((size: string) => size === filter)
           )
         );
       } else {

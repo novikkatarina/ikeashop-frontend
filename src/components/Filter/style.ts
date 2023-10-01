@@ -5,27 +5,27 @@ import CB from 'commons/Checkbox';
 export const Container = styled.div``;
 
 export const Checkbox = styled(CB)`
-  display: inline-block;
+  display: block;
   margin-bottom: 10px;
 
   /* Customize the label (the container) */
   label {
-    display: inline-block;
+    display: block;
     position: relative;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 20px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 35px;
+    width: 75px;
     height: 35px;
-    font-size: 0.8em;
     margin-bottom: 8px;
     margin-right: 8px;
-    border-radius: 50%;
+    border-radius: 10%;
     line-height: 35px;
     text-align: center;
+    background-color: #f0f0f0;
 
     /* On mouse-over, add a border with the primary color */
     &:hover input ~ .checkmark {
@@ -60,10 +60,10 @@ export const Checkbox = styled(CB)`
       position: absolute;
       top: 0;
       left: 0;
-      width: 35px;
+      width: 75px;
       height: 35px;
       font-size: 0.8em;
-      border-radius: 50%;
+      border-radius: 10%;
       box-sizing: border-box;
       line-height: 35px;
       text-align: center;

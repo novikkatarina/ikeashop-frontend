@@ -14,31 +14,28 @@ interface IProps {
 const Product = ({ product }: IProps) => {
   const { openCart, addProduct } = useCart();
   const {
-    sku,
     title,
     price,
-    installments,
-    currencyId,
-    currencyFormat,
-    isFreeShipping,
+    linkFirst,
+    linkSecond,
   } = product;
-
+const currencyId = "RUB";
   const formattedPrice = formatPrice(price, currencyId);
   let productInstallment;
 
-  if (installments) {
-    const installmentPrice = price / installments;
-
-    productInstallment = (
-      <S.Installment>
-        <span>or {installments} x</span>
-        <b>
-          {currencyFormat}
-          {formatPrice(installmentPrice, currencyId)}
-        </b>
-      </S.Installment>
-    );
-  }
+  // if (installments) {
+  //   const installmentPrice = price / installments;
+  //
+  //   productInstallment = (
+  //     <S.Installment>
+  //       {/*<span>or {installments} x</span>*/}
+  //       <b>
+  //         {/*{currencyFormat}*/}
+  //         {formatPrice(installmentPrice, currencyId)}
+  //       </b>
+  //     </S.Installment>
+  //   );
+  // }
 
   const handleAddProduct = () => {
     addProduct({ ...product, quantity: 1 });
@@ -53,13 +50,16 @@ const Product = ({ product }: IProps) => {
   };
 
   return (
-    <S.Container onKeyUp={handleAddProductWhenEnter} sku={sku} tabIndex={1}>
-      {isFreeShipping && <S.Stopper>Free shipping</S.Stopper>}
-      <S.Image alt={title} />
+    <S.Container onKeyUp={handleAddProductWhenEnter} tabIndex={1}>
+      {/*{isFreeShipping && <S.Stopper>Free shipping</S.Stopper>}*/}
+      <S.Image
+        imageUrl={linkFirst}
+        hoverImgUrl={linkSecond}
+        alt={title} />
       <S.Title>{title}</S.Title>
       <S.Price>
         <S.Val>
-          <small>{currencyFormat}</small>
+          {/*<small>{currencyFormat}</small>*/}
           <b>{formattedPrice.substring(0, formattedPrice.length - 3)}</b>
           <span>{formattedPrice.substring(formattedPrice.length - 3)}</span>
         </S.Val>

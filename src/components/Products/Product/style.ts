@@ -17,12 +17,44 @@ export const BuyButton = styled.button`
 `;
 
 interface IImage {
+  imageUrl: string;
+  hoverImgUrl: string;
   alt: string;
 }
-export const Image = styled.div<IImage>``;
+export const Image = styled.div<IImage>`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: ${({imageUrl}) => `url(${imageUrl})`}; // Used imageUrl prop here
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: white;
+
+  ::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: #eee;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+
+  @media only screen and (min-width: ${({theme: {breakpoints}}) =>
+      breakpoints.tablet}) {
+    height: 320px;
+  }
+
+  &:hover {
+    background-image: ${({hoverImgUrl}) => `url(${hoverImgUrl})`}; // Used imageUrl prop here
+  }
+
+}
+`;
 
 interface IContainer {
-  sku: number | string;
 }
 export const Container = styled.div<IContainer>`
   position: relative;
@@ -37,42 +69,12 @@ export const Container = styled.div<IContainer>`
     outline: 3px solid ${({ theme }) => theme.colors.secondary};
   }
 
-  ${Image} {
-    width: 100%;
-    height: 270px;
-    position: relative;
-    background-image: ${({ sku }) =>
-      `url(${require(`static/products/${sku}-1-product.webp`)})`};
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 
-    ::before {
-      content: '';
-      display: block;
-      position: absolute;
-      background: #eee;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    @media only screen and (min-width: ${({ theme: { breakpoints } }) =>
-        breakpoints.tablet}) {
-      height: 320px;
-    }
+  ${BuyButton} {
+    background-color: ${({ theme }) => theme.colors.secondary};
   }
 
-  &:hover {
-    ${Image} {
-      background-image: ${({ sku }) =>
-        `url(${require(`static/products/${sku}-2-product.webp`)})`};
-    }
 
-    ${BuyButton} {
-      background-color: ${({ theme }) => theme.colors.secondary};
-    }
-  }
 `;
 
 export const Stopper = styled.div`

@@ -1,15 +1,12 @@
 export interface IProduct {
-  id: number;
-  sku: number;
-  title: string;
-  description: string;
-  availableSizes: string[];
-  style: string;
-  price: number;
-  installments: number;
-  currencyId: string;
-  currencyFormat: string;
-  isFreeShipping: boolean;
+    id: number;
+    productNumber: number;
+    price: number;
+    quantity: number;
+    room: number;
+    title: string;
+    linkFirst: string;
+    linkSecond: string;
 }
 
 export interface ICartProduct extends IProduct {
@@ -25,7 +22,5 @@ export interface ICartTotal {
 }
 
 export interface IGetProductsResponse {
-  data: {
-    products: IProduct[];
-  };
+  data:  IProduct[];
 }
