@@ -24,3 +24,26 @@ export interface ICartTotal {
 export interface IGetProductsResponse {
   data:  IProduct[];
 }
+
+export interface ICustomer{
+    Id: number;
+    PhoneNumber: string;
+    Name: string;
+    Address: string;
+    Email: string;
+}
+
+export interface IOrder{
+    Id: number;
+    OrderDate: number;
+    EstimatedDeliveryDate: number;
+    Status: string;
+    CustomerId: number;
+    Customer: ICustomer;
+    Items: IProduct;
+    TotalPrice: number;
+
+}
+export interface ICreateOrderResponse{
+    data: IOrder;
+}

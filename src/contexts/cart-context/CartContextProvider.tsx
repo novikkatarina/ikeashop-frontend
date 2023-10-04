@@ -25,8 +25,8 @@ const totalInitialValues = {
   productQuantity: 0,
   installments: 0,
   totalPrice: 0,
-  currencyId: 'USD',
-  currencyFormat: '$',
+  currencyId: 'RUB',
+  currencyFormat: 'RUB',
 };
 
 const CartProvider: FC = (props) => {

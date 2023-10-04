@@ -28,10 +28,17 @@ export const Side = styled.div`
 `;
 
 export const Main = styled.main``;
-
+export const Title = styled.h2`
+  text-align: center;
+  font-size: 45px;
+  color: #333;
+  margin-bottom: 0;
+`;
 export const MainHeader = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: end;
-  padding: 0 15px;
+  padding: 0 ;
 `;
+
+

@@ -67,9 +67,9 @@ describe('[contexts] - products-context', () => {
         await result.current.filterProducts(['M']);
         expect(products).toEqual([
           {
-            availableSizes: ['M', 'ML'],
-            currencyFormat: '$',
-            currencyId: 'USD',
+            room: ['Bedroom', 'Kitchen', 'Bathroom'],
+            currencyFormat: 'RUB',
+            currencyId: 'RUB',
             description: '',
             id: 13,
             installments: 5,

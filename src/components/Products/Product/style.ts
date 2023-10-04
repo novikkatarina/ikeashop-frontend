@@ -23,32 +23,30 @@ interface IImage {
 }
 export const Image = styled.div<IImage>`
   width: 100%;
-  height: 100%;
-  position: absolute;
-  background-image: ${({imageUrl}) => `url(${imageUrl})`}; // Used imageUrl prop here
+  height: 270px;
+  position: relative;
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`}; // Used imageUrl prop here
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  background-color: white;
 
   ::before {
     content: '';
     display: block;
     position: absolute;
-    background: #eee;
+    background: #ffffff;
     width: 100%;
     height: 100%;
     z-index: -1;
   }
 
-
-  @media only screen and (min-width: ${({theme: {breakpoints}}) =>
+  @media only screen and (min-width: ${({ theme: { breakpoints } }) =>
       breakpoints.tablet}) {
     height: 320px;
   }
 
   &:hover {
-    background-image: ${({hoverImgUrl}) => `url(${hoverImgUrl})`}; // Used imageUrl prop here
+    background-image: ${({ hoverImgUrl }) => `url(${hoverImgUrl})`}; // Used imageUrl prop here
   }
 
 }

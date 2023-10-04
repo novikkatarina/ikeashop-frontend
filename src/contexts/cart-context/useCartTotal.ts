@@ -18,21 +18,13 @@ const useCartTotal = () => {
       return sum;
     }, 0);
 
-    // const installments = products.reduce(
-    //   (greater: number, product: ICartProduct) => {
-    //     greater =
-    //       product.installments > greater ? product.installments : greater;
-    //     return greater;
-    //   },
-    //   0
-    // );
 
     const total = {
       productQuantity,
       // installments,
       totalPrice,
-      currencyId: 'USD',
-      currencyFormat: '$',
+      currencyId: 'RUB',
+      currencyFormat: 'RUB',
     };
 
     setTotal(total);

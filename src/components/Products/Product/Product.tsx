@@ -23,20 +23,6 @@ const currencyId = "RUB";
   const formattedPrice = formatPrice(price, currencyId);
   let productInstallment;
 
-  // if (installments) {
-  //   const installmentPrice = price / installments;
-  //
-  //   productInstallment = (
-  //     <S.Installment>
-  //       {/*<span>or {installments} x</span>*/}
-  //       <b>
-  //         {/*{currencyFormat}*/}
-  //         {formatPrice(installmentPrice, currencyId)}
-  //       </b>
-  //     </S.Installment>
-  //   );
-  // }
-
   const handleAddProduct = () => {
     addProduct({ ...product, quantity: 1 });
     openCart();
@@ -48,6 +34,8 @@ const currencyId = "RUB";
       openCart();
     }
   };
+  const priceWithCurrency = `${formattedPrice} RUB`; // Добавляем "RUB" в конец строки
+  console.log(priceWithCurrency);
 
   return (
     <S.Container onKeyUp={handleAddProductWhenEnter} tabIndex={1}>
@@ -60,8 +48,8 @@ const currencyId = "RUB";
       <S.Price>
         <S.Val>
           {/*<small>{currencyFormat}</small>*/}
-          <b>{formattedPrice.substring(0, formattedPrice.length - 3)}</b>
-          <span>{formattedPrice.substring(formattedPrice.length - 3)}</span>
+          <b>{priceWithCurrency.substring(0, formattedPrice.length - 3)}</b>
+          <span>{priceWithCurrency.substring(formattedPrice.length - 3)}</span>
         </S.Val>
         {productInstallment}
       </S.Price>

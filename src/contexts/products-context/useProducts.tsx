@@ -28,11 +28,16 @@ const useProducts = () => {
     getProducts().then((products: IProduct[]) => {
       setIsFetching(false);
       let filteredProducts;
+      const dict: { [key: string]: number } = {
+        'Bedroom': 0,
+        'Kitchen': 1,
+        'Bathroom': 2
+      };
 
       if (filters && filters.length > 0) {
         filteredProducts = products.filter((p: IProduct) =>
-          filters.find((filter: string) => ''
-            // p.availableSizes.find((size: string) => size === filter)
+          filters.find((filter: string) =>
+            p.room === dict[filter],
           )
         );
       } else {
