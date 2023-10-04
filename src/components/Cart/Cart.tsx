@@ -3,22 +3,23 @@ import CartProducts from './CartProducts';
 import { useCart } from 'contexts/cart-context';
 
 import * as S from './style';
+import {useState} from "react";
+import CheckoutModal from "./CheckoutModal";
 
 const Cart = () => {
   const { products, total, isOpen, openCart, closeCart } = useCart();
 
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+
   const handleCheckout = () => {
     if (total.productQuantity) {
-      alert(
-        `Checkout - Subtotal: ${total.currencyFormat} ${formatPrice(
-          total.totalPrice,
-          total.currencyId
-        )}`
-      );
+      setIsCheckoutModalOpen(true);
     } else {
       alert('Add some product in the cart!');
     }
   };
+
+  const closeModal = () => setIsCheckoutModalOpen(false);
 
   const handleToggleCart = (isOpen: boolean) => () =>
     isOpen ? closeCart() : openCart();
@@ -74,6 +75,7 @@ const Cart = () => {
           </S.CartFooter>
         </S.CartContent>
       )}
+      {isCheckoutModalOpen && <CheckoutModal closeModal={closeModal} products={products} />}
     </S.Container>
   );
 };

@@ -1,5 +1,66 @@
 import styled from 'styled-components/macro';
 
+export const Modal = styled.div<{ isOpen: boolean }>`
+  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  position: fixed; // or 'relative', 'absolute' depending on your requirement
+  top: 0;
+  left: 0;
+  width: 100%; // adjust the width and height as necessary
+  height: 100%; // covering the entire viewport for a modal
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  overflow: auto; // to handle the content overflow if any
+`;
+
+
+export const Form = styled.form`
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+`;
+
+export const Input = styled.input`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+`;
+
+export const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border: none;
+  background: red; // change to match your styling
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 4px;
+  z-index: 110; // ensure it's above the modal's z-index
+  color: #fff;
+`;
+
+
+
+export const Button = styled.button`
+  padding: 10px 20px;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkblue;
+  }
+`;
+
 export const CartButton = styled.button`
   border: 0;
   padding: 0;
