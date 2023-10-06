@@ -14,6 +14,7 @@ export const Modal = styled.div<{ isOpen: boolean }>`
 
 
 export const Form = styled.form`
+  position: relative;
   width: 300px;
   margin: 100px auto;
   padding: 20px;
@@ -37,7 +38,7 @@ export const CloseButton = styled.button`
   right: 10px;
   padding: 5px 10px;
   border: none;
-  background: red; // change to match your styling
+  background: black; // change to match your styling
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
@@ -168,6 +169,10 @@ export const CartContent = styled.div`
       background-color: #0c0b10;
     }
   }
+`;
+
+export const CheckoutCommitOrder = styled.div`
+  margin: 0;
 `;
 
 export const CartContentHeader = styled.div`

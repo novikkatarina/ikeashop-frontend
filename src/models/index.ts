@@ -1,5 +1,5 @@
 export interface IProduct {
-    id: number;
+    id: string;
     productNumber: number;
     price: number;
     quantity: number;
@@ -10,30 +10,29 @@ export interface IProduct {
 }
 
 export interface ICartProduct extends IProduct {
-  quantity: number;
+
 }
 
 export interface ICartTotal {
-  productQuantity: number;
-  installments: number;
-  totalPrice: number;
-  currencyId: string;
-  currencyFormat: string;
+    productQuantity: number;
+    installments: number;
+    totalPrice: number;
+    currencyId: string;
+    currencyFormat: string;
 }
 
 export interface IGetProductsResponse {
-  data:  IProduct[];
+    data: IProduct[];
 }
 
-export interface ICustomer{
-    Id: number;
-    PhoneNumber: string;
-    Name: string;
-    Address: string;
-    Email: string;
+export interface ICustomer {
+    phoneNumber: string;
+    name: string;
+    address: string;
+    email: string;
 }
 
-export interface IOrder{
+export interface IOrder {
     Id: number;
     OrderDate: number;
     EstimatedDeliveryDate: number;
@@ -44,6 +43,20 @@ export interface IOrder{
     TotalPrice: number;
 
 }
-export interface ICreateOrderResponse{
+
+export interface ICreateOrderRequestItem {
+    productId: string;
+    productNumber: number;
+    quantity: number;
+
+}
+
+export interface ICreateOrderRequest {
+    customer: ICustomer;
+    items: ICreateOrderRequestItem[];
+}
+
+
+export interface ICreateOrderResponse {
     data: IOrder;
 }
