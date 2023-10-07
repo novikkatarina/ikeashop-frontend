@@ -23,10 +23,9 @@ function App() {
       <S.TwoColumnGrid>
         <S.Side>
           <Filter />
-          {/*<GithubStarButton />*/}
         </S.Side>
         <S.Main>
-          <Title>Ikea Shop</Title>
+          <S.Title>Ikea Shop</S.Title>
           <S.MainHeader>
             <p>{products?.length} Product(s) found</p>
           </S.MainHeader>

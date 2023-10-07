@@ -41,14 +41,12 @@ export interface IOrder {
     Customer: ICustomer;
     Items: IProduct;
     TotalPrice: number;
-
 }
 
 export interface ICreateOrderRequestItem {
     productId: string;
     productNumber: number;
     quantity: number;
-
 }
 
 export interface ICreateOrderRequest {
@@ -58,5 +56,10 @@ export interface ICreateOrderRequest {
 
 
 export interface ICreateOrderResponse {
-    data: IOrder;
+    orderId: string;
+    estimatedDeliveryTime: string;
+    price: number;
+    data: string;
 }
+
+

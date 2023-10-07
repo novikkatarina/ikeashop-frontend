@@ -34,9 +34,9 @@ export const Input = styled.input`
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 5px 10px;
+  top: 5px;
+  right: 5px;
+  padding: 4px 8px;
   border: none;
   background: black; // change to match your styling
   cursor: pointer;
@@ -51,7 +51,7 @@ export const CloseButton = styled.button`
 
 export const Button = styled.button`
   padding: 10px 20px;
-  background-color: blue;
+  background-color: #eabf00;
   color: #fff;
   border: none;
   border-radius: 4px;
