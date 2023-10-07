@@ -100,14 +100,14 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
                 ) : (
                     <>
                         <div style={{height: '20px'}}></div>
-                        <p style={{textAlign: 'center'}}>
-                            Order ID: {responseMessage.orderId}.
-                            Estimated Delivery Time: {responseMessage.estimatedDeliveryTime}.
-                            Total Price: {responseMessage.price}
-                        </p>
+                      <p className="order-info">Your order:</p>
+                      <p className="order-info">Order Number: {responseMessage.orderId}.</p>
+                      <p className="order-info">Estimated Delivery Time: {responseMessage.estimatedDeliveryTime}.</p>
+                      <p className="order-info">Total Price: {responseMessage.price}</p>
                         <div style={{height: '20px'}}></div>
                         <S.Button onClick={closeModal}>Оплата</S.Button>
-                    </>)}
+                    </>)
+                }
             </S.Form>
         </S.Modal>
     );
