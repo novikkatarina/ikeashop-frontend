@@ -32,16 +32,6 @@ export interface ICustomer {
     email: string;
 }
 
-export interface IOrder {
-    Id: number;
-    OrderDate: number;
-    EstimatedDeliveryDate: number;
-    Status: string;
-    CustomerId: number;
-    Customer: ICustomer;
-    Items: IProduct;
-    TotalPrice: number;
-}
 
 export interface ICreateOrderRequestItem {
     productId: string;
@@ -59,7 +49,9 @@ export interface ICreateOrderResponse {
     orderId: string;
     estimatedDeliveryTime: string;
     price: number;
-    data: string;
 }
 
+export interface IPaymentRequest{
+  orderId: string;
+}
 
