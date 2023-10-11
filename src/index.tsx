@@ -9,6 +9,7 @@ import GlobalStyle from 'commons/style/global-style';
 /* Context Providers */
 import { ProductsProvider } from 'contexts/products-context';
 import { CartProvider } from 'contexts/cart-context';
+import './i18n';
 
 import App from 'components/App';
 

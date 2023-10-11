@@ -5,6 +5,7 @@ import Filter from 'components/Filter';
 import Products from 'components/Products';
 import Cart from 'components/Cart';
 import { Title } from './style'
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 
 import { useProducts } from 'contexts/products-context';
 
@@ -17,9 +18,13 @@ function App() {
     fetchProducts();
   }, [fetchProducts]);
 
+
   return (
     <S.Container>
       {isFetching && <Loader />}
+      <div>
+        <LanguageSelector />
+      </div>
       <S.TwoColumnGrid>
         <S.Side>
           <Filter />

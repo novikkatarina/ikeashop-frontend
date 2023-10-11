@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { useProductsContext } from './ProductsContextProvider';
 import { IProduct } from 'models';
 import { getProducts } from 'services/products';
+import {useTranslation} from "react-i18next";
 
 const useProducts = () => {
   const {
@@ -14,6 +15,7 @@ const useProducts = () => {
     setFilters,
   } = useProductsContext();
 
+  const {t, i18n} = useTranslation();
   const fetchProducts = useCallback(() => {
     setIsFetching(true);
     getProducts().then((products: IProduct[]) => {
@@ -29,10 +31,10 @@ const useProducts = () => {
       setIsFetching(false);
       let filteredProducts;
       const dict: { [key: string]: number } = {
-        'Bedroom': 0,
-        'Kitchen': 1,
-        'Bathroom': 2
       };
+      dict[t("Bedroom")] = 0;
+      dict[t("Kitchen")] = 1;
+      dict[t("Bathroom")] = 2;
 
       if (filters && filters.length > 0) {
         filteredProducts = products.filter((p: IProduct) =>

@@ -6,12 +6,19 @@ import { IProduct } from 'models';
 import { useCart } from 'contexts/cart-context';
 
 import * as S from './style';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import '../../../i18n'
+
+import {useTranslation} from "react-i18next";
 
 interface IProps {
   product: IProduct;
 }
 
 const Product = ({ product }: IProps) => {
+  const { t, i18n } = useTranslation();
+
   const { openCart, addProduct } = useCart();
   const {
     title,
@@ -53,7 +60,7 @@ const currencyId = "RUB";
         {productInstallment}
       </S.Price>
       <S.BuyButton onClick={handleAddProduct} tabIndex={-1}>
-        Add to cart
+        {t('AddToCart')}
       </S.BuyButton>
     </S.Container>
   );
