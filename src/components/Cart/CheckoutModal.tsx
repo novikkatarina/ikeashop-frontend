@@ -19,13 +19,12 @@ export interface ICreateOrderResponse {
   price: number;
 }
 
+const phoneNumberPattern = /^(\+7|8)\d{10}$/;
+
 const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [modalMessage, setModalMessage] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [responseMessage, setResponseMessage] = useState<ICreateOrderResponse>(
     {
       orderId: '',
@@ -33,7 +32,50 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
       price: 0
     });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
+
+  const handlePhoneNumberChange = (e: any) => {
+    e.preventDefault();
+
+    const { value } = e.target;
+    setPhoneNumber(value);
+    // Здесь вы можете добавить логику для проверки правильного формата номера телефона
+    // Например, вы можете использовать регулярное выражение для проверки номера
+    const phoneRegex = /^[+]?[0-9]+$/; // Пример регулярного выражения для проверки
+    const isPhoneNumberValid = phoneNumberPattern.test(value);
+
+    // Устанавливаем новое значение номера телефона
+    setPhoneNumber(value);
+
+    // Проверяем, правильный ли формат номера телефона
+    if (!isPhoneNumberValid) {
+      // Если формат правильный, сбрасываем ошибку
+
+      setPhoneNumberError('Invalid phone number format. Please use the format: +7XXXXXXXXX or 8XXXXXXXXX');
+    } else {
+      setPhoneNumberError('');
+
+
+/*      setPhoneNumberError('Неверный формат номера телефона');
+    } else {
+
+      // Если формат неправильный, устанавливаем ошибку
+      return;*/
+    }
+   /* const { value } = e.target;
+    setPhoneNumber(value);
+
+    // Validate the phone number using the regular expression
+    if (!phoneNumberPattern.test(value))  {
+      setPhoneNumberError('Invalid phone number format. Please use the format: +7XXXXXXXXX or 8XXXXXXXXX');
+    } else {
+      setPhoneNumberError('');
+    }*/
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -41,8 +83,7 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
     if (isSubmitted)
       return;
 
-    const
-      customer: ICustomer = {
+    const customer: ICustomer = {
         email: email,
         address: address,
         name: name,
@@ -70,17 +111,20 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
     };*/
 
     createOrder(request)
-      .then((response: ICreateOrderResponse) => {
+      .then((response: ICreateOrderResponse) => { if (phoneNumberError === '')
         setResponseMessage(response);
         setIsSubmitted(true)
       })
-
-
+      .catch(e => {
+        setErrorMessage(e.response.data);
+        setError(true);
+      }
+    )
     //checkoutCommitOrder();
   };
 
 
-  const handleSubmit2 = () => {
+  const handlePay = () => {
     const payment: IPaymentRequest = {
       orderId: responseMessage.orderId
     }
@@ -88,8 +132,6 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
     createPay(payment).then(() => {
       closeModal();
     })
-
-
   };
 
 
@@ -98,7 +140,11 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
       <S.Form onSubmit={handleSubmit}>
         <S.CloseButton onClick={closeModal}>X</S.CloseButton>
 
-        {!isSubmitted ? (
+        {error &&
+          <h1> {errorMessage} </h1>
+        }
+
+        {!error && !isSubmitted &&
           <>
             <div style={{height: '20px'}}></div>
             <S.Input type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)}
@@ -109,11 +155,16 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
                      onChange={e => setAddress(e.target.value)}
                      required/>
             <S.Input type="tel" placeholder="Phone Number" value={phoneNumber}
-                     onChange={e => setPhoneNumber(e.target.value)} required/>
+                     onChange={e => handlePhoneNumberChange(e)} required/>
+            {phoneNumberError && <div style={{ color: 'red' }}>{phoneNumberError}</div>}
+
+
             <div style={{height: '20px'}}></div>
-            <S.Button type="submit">Commit Order</S.Button>
+            <S.Button disabled={phoneNumberError !== ''} type="submit">Commit Order</S.Button>
           </>
-        ) : (
+        }
+
+        {!error && isSubmitted &&
           <>
             <div style={{height: '20px'}}></div>
             <p className="order-info">Your order:</p>
@@ -121,8 +172,8 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
             <p className="order-info">Estimated Delivery Time: {responseMessage.estimatedDeliveryTime}.</p>
             <p className="order-info">Total Price: {responseMessage.price}</p>
             <div style={{height: '20px'}}></div>
-            <S.Button onClick={handleSubmit2}>Payment</S.Button>
-          </>)
+            <S.Button onClick={handlePay}>Payment</S.Button>
+          </>
         }
       </S.Form>
     </S.Modal>

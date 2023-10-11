@@ -35,7 +35,6 @@ const currencyId = "RUB";
     }
   };
   const priceWithCurrency = `${formattedPrice} RUB`; // Добавляем "RUB" в конец строки
-  console.log(priceWithCurrency);
 
   return (
     <S.Container onKeyUp={handleAddProductWhenEnter} tabIndex={1}>
