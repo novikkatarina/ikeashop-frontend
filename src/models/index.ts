@@ -7,6 +7,7 @@ export interface IProduct {
     title: string;
     linkFirst: string;
     linkSecond: string;
+    description: string
 }
 
 export interface ICartProduct extends IProduct {

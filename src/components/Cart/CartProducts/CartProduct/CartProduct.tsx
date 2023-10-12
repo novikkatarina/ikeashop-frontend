@@ -16,7 +16,6 @@ const CartProduct = ({ product }: IProps) => {
     price,
     quantity,
       linkFirst,
-      linkSecond,
   } = product;
 
   const handleRemoveProduct = () => removeProduct(product);

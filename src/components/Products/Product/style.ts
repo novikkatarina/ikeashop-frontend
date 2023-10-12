@@ -1,7 +1,9 @@
 import styled from 'styled-components/macro';
 
-export const BuyButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.primary};
+export const BuyButton = styled.button<{ clicked: boolean }>`
+
+  background-color: ${props => props.clicked ? 'blue' : 'yellow'};
+
   color: #fff;
   padding: 15px 0;
   margin-top: 10px;
@@ -15,6 +17,25 @@ export const BuyButton = styled.button`
     outline: 3px solid ${({ theme }) => theme.colors.secondary};
   }
 `;
+
+export const button = styled.button<{ clicked: boolean }>`
+  background-color: ${props => props.clicked ? '#414163' : '#eabf00'};
+
+
+  color: #fff;
+  padding: 15px 0;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  border: 0;
+
+  transition: background-color 0.2s;
+
+  &:focus-visible {
+    outline: 3px solid ${({ theme }) => theme.colors.secondary};
+  }
+`;
+
 
 interface IImage {
   imageUrl: string;
