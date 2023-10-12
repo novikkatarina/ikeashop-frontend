@@ -34,7 +34,7 @@ const Filter = () => {
 
   return (
     <S.Container>
-      <S.Title>Rooms:</S.Title>
+      <S.Title>{t("Rooms")}:</S.Title>
       {createCheckboxes()}
     </S.Container>
   );

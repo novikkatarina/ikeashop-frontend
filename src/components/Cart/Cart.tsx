@@ -5,8 +5,10 @@ import { useCart } from 'contexts/cart-context';
 import * as S from './style';
 import {useState} from "react";
 import CheckoutModal from "./CheckoutModal";
+import {useTranslation} from "react-i18next";
 
 const Cart = () => {
+  const { t, i18n } = useTranslation();
   const { products, total, isOpen, openCart, closeCart } = useCart();
 
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
@@ -15,7 +17,7 @@ const Cart = () => {
     if (total.productQuantity) {
       setIsCheckoutModalOpen(true);
     } else {
-      alert('Add some product in the cart!');
+      alert(t('AddSome'));
     }
   };
 
@@ -31,7 +33,7 @@ const Cart = () => {
           <span>X</span>
         ) : (
           <S.CartIcon>
-            <S.CartQuantity title="Products in cart quantity">
+            <S.CartQuantity title={t("ProductsIn")}>
               {total.productQuantity}
             </S.CartQuantity>
           </S.CartIcon>
@@ -44,13 +46,13 @@ const Cart = () => {
             <S.CartIcon large>
               <S.CartQuantity>{total.productQuantity}</S.CartQuantity>
             </S.CartIcon>
-            <S.HeaderTitle>Cart</S.HeaderTitle>
+            <S.HeaderTitle>{t('Cart')}</S.HeaderTitle>
           </S.CartContentHeader>
 
           <CartProducts products={products} />
 
           <S.CartFooter>
-            <S.Sub>SUBTOTAL</S.Sub>
+            <S.Sub>{t("Subtotal")}</S.Sub>
             <S.SubPrice>
               <S.SubPriceValue>{`${total.currencyFormat} ${formatPrice(
                 total.totalPrice,
@@ -70,7 +72,7 @@ const Cart = () => {
               </S.SubPriceInstallment>
             </S.SubPrice>
             <S.CheckoutButton onClick={handleCheckout} autoFocus>
-              Checkout
+              {t("Checkout")}
             </S.CheckoutButton>
           </S.CartFooter>
         </S.CartContent>

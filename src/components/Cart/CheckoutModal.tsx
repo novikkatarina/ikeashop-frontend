@@ -6,6 +6,7 @@ import {createOrder} from "../../services/orders";
 import {ICustomer} from "../../models";
 import {Simulate} from "react-dom/test-utils";
 import {createPay} from "../../services/Payment";
+import {useTranslation} from "react-i18next";
 
 
 interface CheckoutModalProps {
@@ -22,6 +23,7 @@ export interface ICreateOrderResponse {
 const phoneNumberPattern = /^(\+7|8)\d{10}$/;
 
 const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
+  const { t, i18n } = useTranslation();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
@@ -160,19 +162,19 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
 
 
             <div style={{height: '20px'}}></div>
-            <S.Button disabled={phoneNumberError !== ''} type="submit">Commit Order</S.Button>
+            <S.Button disabled={phoneNumberError !== ''} type="submit">{t("CommitOrder")}</S.Button>
           </>
         }
 
         {!error && isSubmitted &&
           <>
             <div style={{height: '20px'}}></div>
-            <p className="order-info">Your order:</p>
-            <p className="order-info">Order Number: {responseMessage.orderId}.</p>
-            <p className="order-info">Estimated Delivery Time: {responseMessage.estimatedDeliveryTime}.</p>
-            <p className="order-info">Total Price: {responseMessage.price}</p>
+            <p className="order-info">{t("YourOrder")}:</p>
+            <p className="order-info">{t("OrderNumber")}: {responseMessage.orderId}.</p>
+            <p className="order-info">{t("EstimatedDel")}: {responseMessage.estimatedDeliveryTime}.</p>
+            <p className="order-info">{t("TotalPrice")}: {responseMessage.price}</p>
             <div style={{height: '20px'}}></div>
-            <S.Button onClick={handlePay}>Payment</S.Button>
+            <S.Button onClick={handlePay}>{t("Payment")}</S.Button>
           </>
         }
       </S.Form>

@@ -10,9 +10,11 @@ import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import { useProducts } from 'contexts/products-context';
 
 import * as S from './style';
+import {useTranslation} from "react-i18next";
 
 function App() {
   const { isFetching, products, fetchProducts } = useProducts();
+    const { t, i18n } = useTranslation();
 
   useEffect(() => {
     fetchProducts();
@@ -32,7 +34,7 @@ function App() {
         <S.Main>
           <S.Title>Ikea Shop</S.Title>
           <S.MainHeader>
-            <p>{products?.length} Product(s) found</p>
+            <p>{products?.length} {t("Product(s)")}</p>
           </S.MainHeader>
           <Products products={products} />
         </S.Main>

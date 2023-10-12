@@ -86,7 +86,7 @@ const currencyId = "RUB";
           }}
           clicked={isDetailsButtonClicked}
       >
-        {details ? 'Hide Details' : 'Show Details'}
+        {details ? t('HideDetails') : t('ShowDetails')}
       </S.button>
         {details && <div>
             <p>{ product.description }</p>

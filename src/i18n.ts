@@ -12,8 +12,23 @@ i18n
                     "Hello": "Hello",
                     "Bedroom": "Bedroom",
                     "Kitchen": "Kitchen",
-                    "Bathroom": "Bathroom"
-                    // Добавьте здесь другие фразы для английского языка
+                    "Bathroom": "Bathroom",
+                    "Invalidphone" : "Invalid phone number format. Please use the format: +7XXXXXXXXX or 8XXXXXXXXX",
+                    "ShowDetails" : "Show Details",
+                        "HideDetails" : "Hide Details",
+                    "AddSome" : "Add some products in the cart!",
+                    "ProductsIn" : "Products in cart quantity",
+                    "Checkout" : "Checkout",
+                    "Cart" : "Cart",
+                    "Subtotal" : "SUBTOTAL",
+                    "Rooms" : "Rooms",
+                    "Product(s)" : "Product(s) found",
+                    "CommitOrder" : "Commit Order",
+                    "Payment" : "Payment",
+                    "YourOrder" : "Your Order",
+                    "OrderNumber" : "Order Number",
+                    "EstimatedDel" : "Estimated Delivery Time",
+                    "TotalPrice" : "Total Price",
                 }
             },
             ru: {
@@ -23,8 +38,25 @@ i18n
                     "Hello": "Привет",
                     "Bedroom": "Спальня",
                     "Kitchen": "Кухня",
-                    "Bathroom": "Ванная"
-                    // Добавьте здесь другие фразы для русского языка
+                    "Bathroom": "Ванная",
+                    "Invalidphone" : "Неверный формат номера телефона. Пожалуйста, используйте формат: +7XXXXXXXXX или 8XXXXXXXXX.",
+                    "ShowDetails" : "Описание товара",
+                    "HideDetails" : "Скрыть описание",
+                    "AddSome" : "Добавьте товар в корзину!",
+                    "ProductsIn" : "Количество товаров в корзине",
+                    "Checkout" : "Проверить наличие",
+                    "Cart" : "Корзина",
+                    "Subtotal" : "ИТОГО",
+                    "Rooms" : "Комнаты",
+                    "Product(s)" : "Товара(ов) найдено",
+                    "CommitOrder" : "Создать заказ",
+                    "Payment" : "Оплата",
+                    "YourOrder" : "Ваш заказ",
+                    "OrderNumber" : "Номер заказа",
+                    "EstimatedDel" : "Расчетное время доставки",
+                    "TotalPrice" : "Итого",
+
+
                 }
             }
         },
