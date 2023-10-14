@@ -3,7 +3,8 @@ import { useProducts } from 'contexts/products-context';
 import * as S from './style';
 import {useTranslation} from "react-i18next";
 
-export const availableSizes = ['Bedroom', 'Kitchen', 'Bathroom'];
+export const availableRooms = ['Bedroom', 'Kitchen', 'Bathroom'];
+
 
 
 
@@ -28,7 +29,7 @@ const Filter = () => {
     <S.Checkbox label={t(label)} handleOnChange={toggleCheckbox} key={label} />
   );
 
-  const createCheckboxes = () => availableSizes.map(createCheckbox);
+  const createCheckboxes = () => availableRooms.map(createCheckbox);
 
 
 

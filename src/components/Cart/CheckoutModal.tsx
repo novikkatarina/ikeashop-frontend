@@ -170,7 +170,7 @@ const CheckoutModal = ({closeModal, products}: CheckoutModalProps) => {
           <>
             <div style={{height: '20px'}}></div>
             <p className="order-info">{t("YourOrder")}:</p>
-            <p className="order-info">{t("OrderNumber")}: {responseMessage.orderId}.</p>
+            <p className="order-info">{t("OrderNumber")}: {responseMessage.orderId.substring(0,8)}.</p>
             <p className="order-info">{t("EstimatedDel")}: {responseMessage.estimatedDeliveryTime}.</p>
             <p className="order-info">{t("TotalPrice")}: {responseMessage.price}</p>
             <div style={{height: '20px'}}></div>

@@ -2,7 +2,7 @@ import { renderWithThemeProvider } from 'utils/test/test-utils';
 import { ProductsProvider } from 'contexts/products-context/';
 
 import Filter from '.';
-import { availableSizes } from './Filter';
+import { availableRooms } from './Filter';
 
 describe('[components] - Filter', () => {
   const setup = () => {
@@ -20,6 +20,6 @@ describe('[components] - Filter', () => {
 
   test('should render every filter size avaliable', () => {
     const { getByText } = setup();
-    expect(availableSizes.every((size) => getByText(size))).toBe(true);
+    expect(availableRooms.every((room) => getByText(room))).toBe(true);
   });
 });
