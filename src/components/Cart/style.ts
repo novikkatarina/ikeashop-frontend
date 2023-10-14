@@ -257,3 +257,6 @@ export const CartFooter = styled.div`
     background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
   }
 `;
+
+
+
