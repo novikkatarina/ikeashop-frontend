@@ -4,7 +4,7 @@ import { IGetProductsResponse } from 'models';
 export const getProducts = async () => {
   let response: IGetProductsResponse;
 
-  response = await axios.get('http://localhost:5246/Product/GetProducts');
+  response = await axios.get('http://195.2.85.240:8080/Product/GetProducts');
   const products = response.data || [];
 
   return products;
